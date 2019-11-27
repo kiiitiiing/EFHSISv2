@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EFHSIS</title>
 
-    @if (ViewData["view_title"].Equals("HomeIndex"))
-    {
-        <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="~/adminLTE/plugins/fontawesome-free/css/all.min.css">
-        <!-- overlayScrollbars -->
-        <link rel="stylesheet" href="~/adminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="~/adminLTE/dist/css/adminlte.min.css">
-        <!-- Google Font: Source Sans Pro -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    }
-  
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="~/adminLTE/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/adminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/adminLTE/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 <body>
     <div class="wrapper">
@@ -33,22 +30,18 @@
         </footer>
     </div><!-- ./wrapper -->
 
-    @if (ViewData["view_title"].Equals("HomeIndex"))
-    {
-        <!-- REQUIRED SCRIPTS -->
-        <!-- jQuery -->
-        <script src="~/adminLTE/plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="~/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- overlayScrollbars -->
-        <script src="~/adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="~/adminLTE/dist/js/adminlte.js"></script>
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="~/adminLTE/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/adminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/adminLTE/dist/js/adminlte.js"></script>
 
-        <!-- CANVASS CHART -->
-        <script src="~/js/canvasjs.min.js"></script>
-
-    }
+    <!-- CANVASS CHART -->
+    <script src="~/js/canvasjs.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
