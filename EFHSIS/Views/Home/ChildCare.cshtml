@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<EFHSIS.Models.EFHSISModels.ChildCare>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Child Care";
 }
 <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        @*
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    @*
         @foreach (var item in Model)
         {
             <div>
@@ -13,128 +13,128 @@
                 <hr />
             </div>
         }
-        *@
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Dashboard </h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Child Care</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
+    *@
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Child Care</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Child Care</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
 
-                <!-- Info boxes -->
-                <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
 
-                            <div class="info-box-content">
-                                <span class="info-box-text">Target Population</span>
-                                <span class="info-box-number">
-                                    7,876,400
-                                </span>
-                                <small class="text-green">Target Poor (2,090,994)</small>
-                            </div>
-                            <!-- /.info-box-content -->
+                        <div class="info-box-content">
+                            <span class="info-box-text">Target Population</span>
+                            <span class="info-box-number">
+                                7,876,400
+                            </span>
+                            <small class="text-green">Target Poor (2,090,994)</small>
                         </div>
-                        <!-- /.info-box -->
+                        <!-- /.info-box-content -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box mb-3">
-                            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Population Profiled</span>
-                                <span class="info-box-number">7,143,199</span>
-                                <small class="text-success">90.7% Goal Completion</small>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-                    <!-- fix for small devices only -->
-                    <div class="clearfix hidden-md-up"></div>
-
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box mb-3">
-                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-baby"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Child Care</span>
-                                <span class="info-box-number">760</span>
-                                <small class="text-success">90.7% Goal Completion</small>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box mb-3">
-                            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-city"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Number of Barangay</span>
-                                <span class="info-box-number">3,004</span>
-                                <small class="text-success">90.7% Goal Completion</small>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
+                    <!-- /.info-box -->
                 </div>
-                <!-- /.row -->
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Population Profiled</span>
+                            <span class="info-box-number">7,143,199</span>
+                            <small class="text-success">90.7% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Recap Report</h5>
-                                <div class="card-tools">
-                                    <ul class="nav nav-pills ml-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#part1" data-toggle="tab" onclick="TabClick1();">Part 1</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#part2" data-toggle="tab" onclick="TabClick2();">Part 2</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-baby"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Child Care</span>
+                            <span class="info-box-number">760</span>
+                            <small class="text-success">90.7% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-city"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of Barangay</span>
+                            <span class="info-box-number">3,004</span>
+                            <small class="text-success">90.7% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Recap Report</h5>
+                            <div class="card-tools">
+                                <ul class="nav nav-pills ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#part1" data-toggle="tab" onclick="TabClick1();">Part 1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#part2" data-toggle="tab" onclick="TabClick2();">Part 2</a>
+                                    </li>
+                                </ul>
                             </div>
+                        </div>
 
-                            <div class="card-body">
-                                <p class="text-center">
-                                    <strong>EFHSIS: January 1, 2019 to December 31, 2019</strong>
-                                </p>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="">
-                                            <div class="tab-pane active" id="part1">
-                                                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-                                            </div>
-                                            <div class="tab-pane" id="part2">
-                                                <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-                                            </div>
+                        <div class="card-body">
+                            <p class="text-center">
+                                <strong>EFHSIS: January 1, 2019 to December 31, 2019</strong>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <div class="tab-pane active" id="part1">
+                                            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                                        </div>
+                                        <div class="tab-pane" id="part2">
+                                            <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
                                         </div>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
-                                <!-- /.row -->
+                                <!-- /.col -->
                             </div>
-                            @*
+                            <!-- /.row -->
+                        </div>
+                        @*
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-sm-3 col-6">
@@ -175,19 +175,19 @@
                                 </div>
                                 <!-- /.row -->
                             </div>
-                            *@
-                            <!-- /.card-footer -->
-                        </div>
-                        <!-- /.card -->
+                        *@
+                        <!-- /.card-footer -->
                     </div>
-                    <!-- /.col -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.row -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
 
-            </div><!--/. container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
+        </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
 <!-- /.content-wrapper -->
 
 @section Scripts {
@@ -275,7 +275,7 @@
                         { name: "IMM_OPV3_F", y: (graph_data[0].IMM_OPV3_F / max_data) * 100 },
                         { name: "IMM_OPV3_M", y: (graph_data[0].IMM_OPV3_M / max_data) * 100 , exploded: true },
                         { name: "IMM_OPV2_F", y: (graph_data[0].IMM_OPV2_F / max_data) * 100 },
-                        { name: "IMM_OPV2_M", y: (graph_data[0].IMM_OPV2_M / max_data) * 100 }, 
+                        { name: "IMM_OPV2_M", y: (graph_data[0].IMM_OPV2_M / max_data) * 100 },
                         { name: "IMM_OPV1_F", y: (graph_data[0].IMM_OPV1_F / max_data) * 100 },
                         { name: "IMM_OPV1_M", y: (graph_data[0].IMM_OPV1_M / max_data) * 100 },
                         { name: "IMM_BCG_F", y: (graph_data[0].IMM_BCG_F / max_data) * 100 },

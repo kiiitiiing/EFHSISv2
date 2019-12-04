@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using EFHSIS.Models.EFHSISModels;
+using EFHSIS.Models.GraphModels;
 
 namespace EFHSIS.Controllers
 {
@@ -25,9 +26,18 @@ namespace EFHSIS.Controllers
         [Route("getchildcare")]
         public List<ChildCare> GetChildCare()
         {
-            var childcare = _context.ChildCare.FromSqlRaw("EXEC [EFHSIS].[dbo].[get_childcare];");
-
+            var childcare = _context.ChildCare.FromSqlRaw("EXEC EFHSIS.dbo.GetChildCare @bgy_code = N'Poblacion Oriental';");
             return childcare.ToList();
         }
+
+        [HttpGet]
+        [Route("childcaregraph")]
+        public List<ChildCareGraph> ChildCareGraph()
+        {
+            var child_graph = _context.ChildCareGraph.FromSqlRaw("EXEC EFHSIS.dbo.ChildCareGraph @date = N'2019-01-01',@prov_code = N'CEBU';");
+            
+            return child_graph.ToList();
+        }
+
     }
 }

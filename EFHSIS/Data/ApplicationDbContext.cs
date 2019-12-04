@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EFHSIS.Models;
 using EFHSIS.Models.EFHSISModels;
+using EFHSIS.Models.GraphModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -56,12 +57,12 @@ namespace EFHSIS.Data
         public virtual DbSet<SwitchboardItems> SwitchboardItems { get; set; }
         public virtual DbSet<Tuberculosis> Tuberculosis { get; set; }
         public virtual DbSet<Useraccounts> Useraccounts { get; set; }
+        public virtual DbSet<ChildCareGraph> ChildCareGraph { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=ROCKY\\SQLEXPRESS;Initial Catalog=EFHSIS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             }   
         }
@@ -96,6 +97,13 @@ namespace EFHSIS.Data
                 entity.Property(e => e.ProvCode).IsUnicode(false);
 
                 entity.Property(e => e.RegCode).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<ChildCareGraph>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.PROV_CODE).IsUnicode(false);
             });
 
             modelBuilder.Entity<CopyOfProvDate1>(entity =>
