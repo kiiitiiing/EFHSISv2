@@ -58,6 +58,7 @@ namespace EFHSIS.Data
         public virtual DbSet<Tuberculosis> Tuberculosis { get; set; }
         public virtual DbSet<Useraccounts> Useraccounts { get; set; }
         public virtual DbSet<ChildCareGraph> ChildCareGraph { get; set; }
+        public virtual DbSet<Consolidated> Consolidated { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -104,6 +105,11 @@ namespace EFHSIS.Data
                 entity.HasNoKey();
 
                 entity.Property(e => e.PROV_CODE).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Consolidated>(entity =>
+            {
+                entity.HasNoKey();
             });
 
             modelBuilder.Entity<CopyOfProvDate1>(entity =>

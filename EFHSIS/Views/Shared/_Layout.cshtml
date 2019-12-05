@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="~/adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Date Range Picker-->
+    <link rel="stylesheet" href="~/adminLTE/plugins/daterangepicker_old/daterangepicker-bs3.css">
 
 </head>
 <body>
@@ -31,7 +33,6 @@
             </div>
         </footer>
     </div><!-- ./wrapper -->
-
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src="~/adminLTE/plugins/jquery/jquery.min.js"></script>
@@ -44,6 +45,22 @@
 
     <!-- CANVASS CHART -->
     <script src="~/js/canvasjs.min.js"></script>
+
+    <!-- Date Range Picker -->
+    <script src="~/adminLTE/plugins/daterangepicker_old/moment.min.js"></script>
+    <script src="~/adminLTE/plugins/daterangepicker_old/daterangepicker.js"></script>
+    <script>
+        @{
+            int year = DateTime.Now.Year;
+            DateTime firstDay = new DateTime(year, 1, 1);
+            DateTime lastDay = new DateTime(year, 12, 31);
+        }
+        $('#filter').daterangepicker({
+            "singleDatePicker": false,
+            "startDate": "@firstDay",
+            "endDate": "@lastDay"
+        })
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
