@@ -16,7 +16,7 @@
             var dashboard = "";
             var child_care = "";
             var dental_health = "";
-            if (ViewBag.ControllerFunction == "/")
+            if (ViewBag.ControllerFunction == "/" || ViewBag.ControllerFunction == "/Home/Index")
             {
                 dashboard = "active";
             }
@@ -81,7 +81,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a class="nav-link @dashboard" href="@Url.Action("Index","Home")">
+                        <a class="nav-link @dashboard" href="@Url.Action("Index","Home")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -90,7 +90,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @child_care" href="@Url.Action("ChildCare","Home")">
+                        <a class="nav-link @child_care" href="@Url.Action("ChildCare","Home")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-child"></i>
                             <p>
                                 Child Care
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @dental_health" href="@Url.Action("DentalHome","DentalHealth")">
+                        <a class="nav-link @dental_health" href="@Url.Action("DentalHome","DentalHealth")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-child"></i>
                             <p>
                                 Dental Health
