@@ -13,17 +13,17 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="~/adminLTE/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @*<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">*@
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="~/adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Date Range Picker-->
     <link rel="stylesheet" href="~/adminLTE/plugins/daterangepicker_old/daterangepicker-bs3.css">
-
 </head>
 <body>
     <div class="wrapper">
         <partial name="~/Views/Shared/navbar.cshtml" />
         @RenderBody()
+        <partial name="~/Views/Shared/modal.cshtml" />
         <!-- Main Footer -->
         <footer class="main-footer">
             <strong>Copyright &copy; @DateTime.Now.Year <a href="http://www.ro7.doh.gov.ph/" target="_blank">Department of Health - Central Visayas Center for Health Development Region 7</a>.</strong>
@@ -49,6 +49,7 @@
     <!-- Date Range Picker -->
     <script src="~/adminLTE/plugins/daterangepicker_old/moment.min.js"></script>
     <script src="~/adminLTE/plugins/daterangepicker_old/daterangepicker.js"></script>
+    <script>var loading = '<center><img src="img/loading.gif" style="padding:20px;"></center>'; </script>
     <script>
         @{
             int year = DateTime.Now.Year;
@@ -60,6 +61,19 @@
             "startDate": "@firstDay",
             "endDate": "@lastDay"
         })
+
+        function loadingDisplay() {
+            console.log("ruseltayong");
+            $('#modal-loading').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: true
+            });
+        }
+
+        $('#form_submit').submit(function(e){
+            loadingDisplay();
+        });
     </script>
 
     @RenderSection("Scripts", required: false)

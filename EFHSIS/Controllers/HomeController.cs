@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using EFHSIS.Models.EFHSISModels;
 using Newtonsoft.Json;
 using EFHSIS.AuthData;
+using Microsoft.AspNetCore.Http;
 
 namespace EFHSIS.Controllers
 {
@@ -38,6 +39,10 @@ namespace EFHSIS.Controllers
 
             var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
             ViewBag.DataPoints = JsonConvert.SerializeObject(consolidated);
+
+            var userinfo = new UserInfo() { UserId = 1,UserName = "John Doe" };
+            HttpContext.Session.SetString("SessionUser",JsonConvert.SerializeObject(userinfo));
+
             return View();
         }
 
@@ -73,16 +78,6 @@ namespace EFHSIS.Controllers
             var lastDay = array[1];
             var child_graph = _context.ChildCareGraph.FromSqlRaw($"EXEC EFHSIS.dbo.ChildCareGraph @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
             ViewBag.DataPoints = JsonConvert.SerializeObject(child_graph);
-            return View();
-        }
-
-        public List<ChildCare> GetChildCare()
-        {
-            var childcare = _context.ChildCare.FromSqlRaw("EXEC [EFHSIS].[dbo].[GetChildCare];");
-            return childcare.ToList();
-        }
-
-        public IActionResult envi_health() {
             return View();
         }
 

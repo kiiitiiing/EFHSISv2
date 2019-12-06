@@ -12,9 +12,25 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
-
+        @{
+            var dashboard = "";
+            var child_care = "";
+            var dental_health = "";
+            if (ViewBag.ControllerFunction == "/")
+            {
+                dashboard = "active";
+            }
+            else if (ViewBag.ControllerFunction == "/Home/ChildCare")
+            {
+                child_care = "active";
+            }
+            else if (ViewBag.ControllerFunction == "/DentalHealth/DentalHome")
+            {
+                dental_health = "active";
+            }
+        }
         <!-- FILTER FORM -->
-        <form class="form-inline ml-3" method="POST" action="@Url.Action("Index", "Home")">
+        <form class="form-inline ml-3" method="POST" id="form_submit" >
             @{
                 int year = DateTime.Now.Year;
                 DateTime firstDay = new DateTime(year, 1, 1);
@@ -64,18 +80,6 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    @{
-                        var dashboard = "";
-                        var child_care = "";
-                        if (ViewBag.ControllerFunction == "/")
-                        {
-                            dashboard = "active";
-                        }
-                        else if (ViewBag.ControllerFunction == "/Home/ChildCare")
-                        {
-                            child_care = "active";
-                        }
-                    }
                     <li class="nav-item">
                         <a class="nav-link @dashboard" href="@Url.Action("Index","Home")">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -94,7 +98,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @child_care" href="@Url.Action("ChildCare","Home")">
+                        <a class="nav-link @dental_health" href="@Url.Action("DentalHome","DentalHealth")">
                             <i class="nav-icon fas fa-child"></i>
                             <p>
                                 Dental Health
