@@ -19,7 +19,27 @@ namespace EFHSIS.AuthData
             if (controller == null) return;
 
             var url = context.HttpContext.Request.Path;
-            controller.ViewBag.ControllerFunction = url;             
+            controller.ViewBag.ctrlurl = url;
+            var dictionary = new Dictionary<string, object>();
+            dictionary.Add("/","");
+            dictionary.Add("/Home/ChildCare","");
+            dictionary.Add("/DentalHealth/DentalHome","");
+            dictionary.Add("/EnvironmentalHealth/EnvironmentalHome", "");
+            dictionary.Add("/FamilyPlanning/FamilyHome", "");
+            dictionary.Add("/Filariasis/FilariasisHome", "");
+            dictionary.Add("/Leprosy/LeprosyHome", "");
+            dictionary.Add("/Malaria/MalariaHome", "");
+            dictionary.Add("/MaternalCare/MaternalHome","");
+            dictionary.Add("/MortBhs/MortBhsHome", "");
+            dictionary.Add("/Mortality/MortalityHome", "");
+            dictionary.Add("/Natality/NatalityHome", "");
+            dictionary.Add("/NatalityLcr/NatalityLcrHome", "");
+            dictionary.Add("/NatalityTcl/NatalityTclHome", "");
+            dictionary.Add("/Schistosomiasis/SchistosomiasisHome", "");
+            dictionary.Add("/Sti/StiHome", "");
+            dictionary.Add("/Tuberculosis/TuberculosisHome", "");
+            dictionary[url] = "active";
+            controller.ViewBag.NavCheck = dictionary;
         }
 
 

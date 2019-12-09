@@ -78,7 +78,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Number of Municipality</span>
-                                <span class="info-box-number">3,004</span>
+                                <span class="info-box-number muncity_total">0</span>
                                 <small class="text-success">90.7% Goal Completion</small>
                             </div>
                             <!-- /.info-box-content -->
@@ -146,16 +146,16 @@
     <script>
         function RenderedCanvass() {
             var graph_data = @Html.Raw(ViewBag.DataPoints);
+            var muncity_total = graph_data[0].muncity;
+            $(".muncity_total").html(muncity_total);
             delete graph_data[0].PROV_CODE;
+            delete graph_data[0].muncity;
             var arr = Object.values(graph_data[0]);
             var max_data = arr.reduce(function(a, b) {
                 return Math.max(a, b);
             });
-
             var efhsis_total = arr.reduce((a, b) => a + b, 0);
             $(".efhsis_total").html(efhsis_total);
-            console.log(max_data);
-            console.log(arr);
             console.log(efhsis_total);
 
             var chart = new CanvasJS.Chart("bar_chart", {

@@ -23,6 +23,7 @@ namespace EFHSIS.Models.GraphModels
         public int natalitytcl { get; set; } 
         public int schistosomiasis { get; set; } 
         public int sti { get; set; } 
-        public int tuberculosis { get; set; } 
+        public int tuberculosis { get; set; }
+        public int muncity { get; set; }
     }
 }

@@ -12,23 +12,6 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
-        @{
-            var dashboard = "";
-            var child_care = "";
-            var dental_health = "";
-            if (ViewBag.ControllerFunction == "/" || ViewBag.ControllerFunction == "/Home/Index")
-            {
-                dashboard = "active";
-            }
-            else if (ViewBag.ControllerFunction == "/Home/ChildCare")
-            {
-                child_care = "active";
-            }
-            else if (ViewBag.ControllerFunction == "/DentalHealth/DentalHome")
-            {
-                dental_health = "active";
-            }
-        }
         <!-- FILTER FORM -->
         <form class="form-inline ml-3" method="POST" id="form_submit" >
             @{
@@ -81,7 +64,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a class="nav-link @dashboard" href="@Url.Action("Index","Home")" onclick="loadingDisplay()">
+                        <a class="nav-link @ViewBag.NavCheck["/"]" href="@Url.Action("Index","Home")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -90,7 +73,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @child_care" href="@Url.Action("ChildCare","Home")" onclick="loadingDisplay()">
+                        <a class="nav-link @ViewBag.NavCheck["/Home/ChildCare"]" href="@Url.Action("ChildCare","Home")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-child"></i>
                             <p>
                                 Child Care
@@ -98,10 +81,122 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @dental_health" href="@Url.Action("DentalHome","DentalHealth")" onclick="loadingDisplay()">
-                            <i class="nav-icon fas fa-child"></i>
+                        <a class="nav-link @ViewBag.NavCheck["/DentalHealth/DentalHome"]" href="@Url.Action("DentalHome","DentalHealth")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-tooth"></i>
                             <p>
                                 Dental Health
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/EnvironmentalHealth/EnvironmentalHome"]" href="@Url.Action("EnvironmentalHome","EnvironmentalHealth")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-tree"></i>
+                            <p>
+                                Environmental Health
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/FamilyPlanning/FamilyHome"]" href="@Url.Action("FamilyHome","FamilyPlanning")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-church"></i>
+                            <p>
+                                Family Planning
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Filariasis/FilariasisHome"]" href="@Url.Action("FilariasisHome","Filariasis")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-bug"></i>
+                            <p>
+                                Filariasis
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Leprosy/LeprosyHome"]" href="@Url.Action("LeprosyHome","Leprosy")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-hand-spock"></i>
+                            <p>
+                                Leprosy
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Malaria/MalariaHome"]" href="@Url.Action("MalariaHome","Malaria")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-spray-can"></i>
+                            <p>
+                                Malaria
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/MaternalCare/MaternalHome"]" href="@Url.Action("MaternalHome","MaternalCare")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-democrat"></i>
+                            <p>
+                                Maternal Care
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/MortBhs/MortBhsHome"]" href="@Url.Action("MortBhsHome","MortBhs")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-bed"></i>
+                            <p>
+                                Mort Bhs
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Mortality/MortalityHome"]" href="@Url.Action("MortalityHome","Mortality")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-route"></i>
+                            <p>
+                                Mortality
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Natality/NatalityHome"]" href="@Url.Action("NatalityHome","Natality")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-grimace"></i>
+                            <p>
+                                Natality
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/NatalityLcr/NatalityLcrHome"]" href="@Url.Action("NatalityLcrHome","NatalityLcr")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-surprise"></i>
+                            <p>
+                                Natality LCR
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/NatalityTcl/NatalityTclHome"]" href="@Url.Action("NatalityTclHome","NatalityTcl")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-swimmer"></i>
+                            <p>
+                                Natality TCL
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Schistosomiasis/SchistosomiasisHome"]" href="@Url.Action("SchistosomiasisHome","Schistosomiasis")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-skull"></i>
+                            <p>
+                                Schistosomiasis
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Sti/StiHome"]" href="@Url.Action("StiHome","Sti")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-restroom"></i>
+                            <p>
+                                STI
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.NavCheck["/Tuberculosis/TuberculosisHome"]" href="@Url.Action("TuberculosisHome","Tuberculosis")" onclick="loadingDisplay()">
+                            <i class="nav-icon fas fa-x-ray"></i>
+                            <p>
+                                Tuberculosis
                             </p>
                         </a>
                     </li>

@@ -81,6 +81,19 @@ namespace EFHSIS.Controllers
             return View();
         }
 
+        public object TestFunc() {
+            var dictionary = new Dictionary<string, object>();
+            var dictionary1 = new Dictionary<string, object>();
+            dictionary1.Add("soccer", "Ronaldo Christiano");
+            dictionary1.Add("boxing", "Manny Pacquiao");
+
+            dictionary.Add("fname", dictionary1);
+            dictionary.Add("mname", "tamayo");
+            dictionary.Add("lname", "tayong");
+
+            return dictionary;
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -16,18 +16,18 @@ namespace EFHSIS.Controllers
 {
     [Authorize]
     [MyActionFilter]
-    public class MaternalCareController : Controller
+    public class EnvironmentalHealthController : Controller
     {
-        private readonly ILogger<MaternalCareController> _logger;
+        private readonly ILogger<EnvironmentalHealthController> _logger;
         private readonly ApplicationDbContext _context;
 
-        public MaternalCareController(ILogger<MaternalCareController> logger, ApplicationDbContext context)
+        public EnvironmentalHealthController(ILogger<EnvironmentalHealthController> logger, ApplicationDbContext context)
         {
             _logger = logger;
             _context = context;
         }
         [HttpGet]
-        public IActionResult MaternalHome()
+        public IActionResult EnvironmentalHome()
         {
             int year = DateTime.Now.Year;
             DateTime firstDay = new DateTime(year, 1, 1);
@@ -38,8 +38,9 @@ namespace EFHSIS.Controllers
             ViewBag.UserInfo = JsonConvert.DeserializeObject<UserInfo>(HttpContext.Session.GetString("SessionUser"));
             return View();
         }
+
         [HttpPost]
-        public IActionResult MaternalHome(string filter)
+        public IActionResult EnvironmentalHome(string filter)
         {
             var rx = new System.Text.RegularExpressions.Regex(" - ");
             var array = rx.Split(filter);

@@ -1,15 +1,270 @@
-﻿
+﻿@model IEnumerable<EFHSIS.Models.EFHSISModels.ChildCare>
 @{
-    Layout = null;
+    ViewData["Title"] = "Natality";
 }
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">@ViewData["Title"] </h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
 
-<!DOCTYPE html>
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>NatalityHome</title>
-</head>
-<body>
-</body>
-</html>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Target Population</span>
+                            <span class="info-box-number">
+                                7,876,400
+                            </span>
+                            <small class="text-green">Target Poor (2,090,994)</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Population Profiled</span>
+                            <span class="info-box-number">7,143,199</span>
+                            <small class="text-success">90.7% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-file-medical-alt"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of EFHSIS</span>
+                            <span class="info-box-number efhsis_total">0</span>
+                            <small class="text-success">80% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-city"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of Municipality</span>
+                            <span class="info-box-number">3,004</span>
+                            <small class="text-success">90.7% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Recap Report</h5>
+                            <div class="card-tools">
+                                <ul class="nav nav-pills ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#part1" data-toggle="tab" onclick="TabClick1();">Part 1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#part2" data-toggle="tab" onclick="TabClick2();">Part 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="text-center">
+                                <strong>EFHSIS: January 1, 2019 to December 31, 2019</strong>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <div class="tab-pane active" id="part1">
+                                            <div id="pie_chart" style="height: 400px; width: 100%;"></div>
+                                        </div>
+                                        <div class="tab-pane" id="part2">
+                                            <div id="bar_chart" style="height: 400px; width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+        </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+@section Scripts {
+    <script>
+        $('body').addClass("hold-transition sidebar-mini");
+    </script>
+
+    <script>
+        function RenderedCanvass() {
+            var graph_data = @Html.Raw(ViewBag.DataPoints);
+            delete graph_data[0].PROV_CODE;
+            var arr = Object.values(graph_data[0]);
+            var max_data = arr.reduce(function(a, b) {
+                return Math.max(a, b);
+            });
+
+            var efhsis_total = arr.reduce((a, b) => a + b, 0);
+            $(".efhsis_total").html(efhsis_total);
+            console.log(max_data);
+            console.log(arr);
+            console.log(efhsis_total);
+
+            var chart = new CanvasJS.Chart("bar_chart", {
+                animationEnabled: true,
+                title: {
+                    text: ""
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY: {
+                    title: "Expenses in Billion Dollars",
+                    scaleBreaks: {
+                        type: "wavy",
+                        customBreaks: [{
+                                startValue: 10000,
+                                endValue: 24000
+                            }
+                        ]
+                    }
+                },
+                data: [{
+                    type: "bar",
+                    toolTipContent: "<b>{label}</b><br>Total: {y}",
+                    dataPoints: [
+                        { label: "child_care", y: graph_data[0].child_care },
+                        { label: "dental_health", y: graph_data[0].dental_health },
+                        { label: "environmental_health", y: graph_data[0].environmental_health },//
+                        { label: "family_planning", y: graph_data[0].family_planning },
+                        { label: "filariasis", y: graph_data[0].filariasis },
+                        { label: "leprosy", y: graph_data[0].leprosy },
+                        { label: "m2_bhs", y: graph_data[0].m2_bhs },
+                        { label: "malaria", y: graph_data[0].malaria }, //
+                        { label: "maternal_care", y: graph_data[0].maternal_care },
+                        { label: "mort_bhs", y: graph_data[0].mort_bhs },
+                        { label: "mortality", y: graph_data[0].mortality },
+                        { label: "natality", y: graph_data[0].natality },
+                        { label: "natalitylcr", y: graph_data[0].natalitylcr }, //
+                        { label: "natalitytcl", y: graph_data[0].natalitytcl },
+                        { label: "schistosomiasis", y: graph_data[0].schistosomiasis },
+                        { label: "sti", y: graph_data[0].sti },
+                        { label: "tuberculosis", y: graph_data[0].tuberculosis }
+                    ]
+                }]
+            });
+            chart.render();
+
+            var chart2 = new CanvasJS.Chart("pie_chart", {
+	            exportEnabled: true,
+	            animationEnabled: true,
+	            title:{
+		            text: ""
+	            },
+	            legend:{
+		            cursor: "pointer",
+		            itemclick: explodePie
+	            },
+	            data: [{
+		            type: "pie",
+		            showInLegend: true,
+		            toolTipContent: "{label}: <strong>{total}</strong>",
+		            indexLabel: "{label} - {total}",
+		            dataPoints: [
+
+                        { name: "child_care", y: (graph_data[0].child_care / max_data) * 100, label : "Child Care", total : graph_data[0].child_care },
+                        { name: "dental_health", y: (graph_data[0].dental_health / max_data) * 100, label : "Dental Health", total : graph_data[0].dental_health },
+                        { name: "environmental_health", y: (graph_data[0].environmental_health / max_data) * 100, label : "Environmental Health", total : graph_data[0].environmental_health },
+                        { name: "family_planning", y: (graph_data[0].family_planning / max_data) * 100, label : "Family Planning", total : graph_data[0].family_planning },
+                        { name: "filariasis", y: (graph_data[0].filariasis / max_data) * 100, label : "Filariasis", total : graph_data[0].filariasis },
+                        { name: "leprosy", y: (graph_data[0].leprosy / max_data) * 100 , exploded: true, label : "Leprosy", total : graph_data[0].leprosy },
+                        { name: "m2_bhs", y: (graph_data[0].m2_bhs / max_data) * 100, label : "M2 BHS", total : graph_data[0].m2_bhs },
+                        { name: "malaria", y: (graph_data[0].malaria / max_data) * 100, label : "Malaria", total : graph_data[0].malaria  },
+                        { name: "maternal_care", y: (graph_data[0].maternal_care / max_data) * 100, label : "Maternal Care", total : graph_data[0].maternal_care },
+                        { name: "mort_bhs", y: (graph_data[0].mort_bhs / max_data) * 100, label : "Mort bhs", total : graph_data[0].mort_bhs },
+                        { name: "mortality", y: (graph_data[0].mortality / max_data) * 100, label : "Mortality", total : graph_data[0].mortality },
+                        { name: "natality", y: (graph_data[0].natality / max_data) * 100, label : "Natality", total : graph_data[0].natality },
+                        { name: "natalitylcr", y: (graph_data[0].natalitylcr / max_data) * 100, label : "Natalitylcr", total : graph_data[0].natalitylcr },
+                        { name: "natalitytcl", y: (graph_data[0].natalitytcl / max_data) * 100, label : "Natalitytcl", total : graph_data[0].natalitytcl },
+                        { name: "schistosomiasis", y: (graph_data[0].schistosomiasis / max_data) * 100, label : "Schistosomiasis", total : graph_data[0].schistosomiasis },
+                        { name: "sti", y: (graph_data[0].sti / max_data) * 100, label : "STI", total : graph_data[0].sti },
+                        { name: "tuberculosis", y: (graph_data[0].tuberculosis / max_data) * 100, label : "Tuberculosis" , total : graph_data[0].tuberculosis}
+
+		            ]
+	            }]
+            });
+            chart2.render();
+            TabClick1();
+        }
+        RenderedCanvass();
+
+        function explodePie (e) {
+	        if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	        } else {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	        }
+	        e.chart.render();
+
+        }
+
+        function TabClick1() {
+            $("#part1").show();
+            $("#part2").hide();
+        }
+        function TabClick2() {
+            $("#part1").hide();
+            $("#part2").show();
+        }
+
+
+    </script>
+}

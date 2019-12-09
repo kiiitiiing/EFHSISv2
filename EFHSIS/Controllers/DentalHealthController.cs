@@ -33,10 +33,9 @@ namespace EFHSIS.Controllers
             DateTime firstDay = new DateTime(year, 1, 1);
             DateTime lastDay = new DateTime(year, 12, 31);
 
-            var child_graph = _context.ChildCareGraph.FromSqlRaw($"EXEC EFHSIS.dbo.ChildCareGraph @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
-            ViewBag.DataPoints = JsonConvert.SerializeObject(child_graph);
-            var userInfo = JsonConvert.DeserializeObject<UserInfo>(HttpContext.Session.GetString("SessionUser"));
-            ViewBag.UserInfo = userInfo;
+            var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
+            ViewBag.DataPoints = JsonConvert.SerializeObject(consolidated);
+            ViewBag.UserInfo = JsonConvert.DeserializeObject<UserInfo>(HttpContext.Session.GetString("SessionUser"));
             return View();
         }
 
@@ -47,10 +46,9 @@ namespace EFHSIS.Controllers
             var array = rx.Split(filter);
             var firstDay = array[0];
             var lastDay = array[1];
-            var child_graph = _context.ChildCareGraph.FromSqlRaw($"EXEC EFHSIS.dbo.ChildCareGraph @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
-            ViewBag.DataPoints = JsonConvert.SerializeObject(child_graph);
-            var userInfo = JsonConvert.DeserializeObject<UserInfo>(HttpContext.Session.GetString("SessionUser"));
-            ViewBag.UserInfo = userInfo;
+            var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
+            ViewBag.DataPoints = JsonConvert.SerializeObject(consolidated);
+            ViewBag.UserInfo = JsonConvert.DeserializeObject<UserInfo>(HttpContext.Session.GetString("SessionUser"));
             return View();
         }
     }
