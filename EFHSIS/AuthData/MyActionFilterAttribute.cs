@@ -42,6 +42,10 @@ namespace EFHSIS.AuthData
             controller.ViewBag.NavCheck = dictionary;
         }
 
+        public void MyFilterRusel() { 
+        
+        }
+
 
     }
 }

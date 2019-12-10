@@ -1,0 +1,81 @@
+﻿<script>
+        function RenderedCanvass() {
+            var pie_chart_data = @Html.Raw(ViewBag.pie_chart);
+            console.log(pie_chart_data);
+
+            var pie_var = new CanvasJS.Chart("pie_chart", {
+	            exportEnabled: true,
+	            animationEnabled: true,
+	            title:{
+		            text: ""
+	            },
+	            legend:{
+		            cursor: "pointer",
+		            itemclick: explodePie
+	            },
+	            data: [{
+		            type: "pie",
+		            showInLegend: true,
+		            toolTipContent: "{label}: <strong>{total}</strong>",
+                    indexLabel: "{label} - {total}",
+                    dataPoints: pie_chart_data
+	            }]
+            });
+            pie_var.render();
+
+            var bar_chart_data = @Html.Raw(ViewBag.bar_chart);
+            console.log(bar_chart_data);
+            var bar_var = new CanvasJS.Chart("bar_chart", {
+                animationEnabled: true,
+                title: {
+                    text: ""
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY: {
+                    title: "Expenses in Billion Dollars",
+                    scaleBreaks: {
+                        type: "wavy",
+                        customBreaks: [{
+                                startValue: 10000,
+                                endValue: 24000
+                            }
+                        ]
+                    }
+                },
+                data: [{
+                    type: "bar",
+                    toolTipContent: "<b>{label}</b><br>Total: {y}",
+                    dataPoints: bar_chart_data
+                }]
+            });
+            bar_var.render();
+
+            TabClick1();
+        }
+
+
+        RenderedCanvass();
+
+        function explodePie (e) {
+	        if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	        } else {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	        }
+	        e.chart.render();
+
+        }
+
+        function TabClick1() {
+            $("#part1").show();
+            $("#part2").hide();
+        }
+        function TabClick2() {
+            $("#part1").hide();
+            $("#part2").show();
+        }
+
+
+</script>
