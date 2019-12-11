@@ -7,21 +7,32 @@ namespace EFHSIS.Models.EFHSISModels
 {
     public partial class Filariasis
     {
+        [NotMapped]
         [Required]
         [Column("REG_CODE")]
         [StringLength(50)]
         public string RegCode { get; set; }
+
+        [NotMapped]
         [Column("PROV_CODE")]
         [StringLength(50)]
         public string ProvCode { get; set; }
+
+        [NotMapped]
         [Column("MUN_CODE")]
         [StringLength(50)]
         public string MunCode { get; set; }
+
+        [NotMapped]
         [Column("BGY_CODE")]
         [StringLength(50)]
         public string BgyCode { get; set; }
+
+        [NotMapped]
         [Column("DATE")]
         public DateTime Date { get; set; }
+
+
         [Column("CASEEXAM_M")]
         public int CaseexamM { get; set; }
         [Column("CASEEXAM_F")]

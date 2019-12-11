@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">@ViewData["Title"] @ViewBag.UserInfo.UserName</h1>
+                    <h1 class="m-0 text-dark">@ViewData["Title"]</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -143,128 +143,5 @@
         $('body').addClass("hold-transition sidebar-mini");
     </script>
 
-    <script>
-        function RenderedCanvass() {
-            var graph_data = @Html.Raw(ViewBag.DataPoints);
-            delete graph_data[0].PROV_CODE;
-            var arr = Object.values(graph_data[0]);
-            var max_data = arr.reduce(function(a, b) {
-                return Math.max(a, b);
-            });
-
-            var efhsis_total = arr.reduce((a, b) => a + b, 0);
-            $(".efhsis_total").html(efhsis_total);
-            console.log(max_data);
-            console.log(arr);
-            console.log(efhsis_total);
-
-            var chart = new CanvasJS.Chart("bar_chart", {
-                animationEnabled: true,
-                title: {
-                    text: ""
-                },
-                axisX: {
-                    interval: 1
-                },
-                axisY: {
-                    title: "Expenses in Billion Dollars",
-                    scaleBreaks: {
-                        type: "wavy",
-                        customBreaks: [{
-                                startValue: 10000,
-                                endValue: 24000
-                            }
-                        ]
-                    }
-                },
-                data: [{
-                    type: "bar",
-                    toolTipContent: "<b>{label}</b><br>Total: {y}",
-                    dataPoints: [
-                        { label: "child_care", y: graph_data[0].child_care },
-                        { label: "dental_health", y: graph_data[0].dental_health },
-                        { label: "environmental_health", y: graph_data[0].environmental_health },//
-                        { label: "family_planning", y: graph_data[0].family_planning },
-                        { label: "filariasis", y: graph_data[0].filariasis },
-                        { label: "leprosy", y: graph_data[0].leprosy },
-                        { label: "m2_bhs", y: graph_data[0].m2_bhs },
-                        { label: "malaria", y: graph_data[0].malaria }, //
-                        { label: "maternal_care", y: graph_data[0].maternal_care },
-                        { label: "mort_bhs", y: graph_data[0].mort_bhs },
-                        { label: "mortality", y: graph_data[0].mortality },
-                        { label: "natality", y: graph_data[0].natality },
-                        { label: "natalitylcr", y: graph_data[0].natalitylcr }, //
-                        { label: "natalitytcl", y: graph_data[0].natalitytcl },
-                        { label: "schistosomiasis", y: graph_data[0].schistosomiasis },
-                        { label: "sti", y: graph_data[0].sti },
-                        { label: "tuberculosis", y: graph_data[0].tuberculosis }
-                    ]
-                }]
-            });
-            chart.render();
-
-            var chart2 = new CanvasJS.Chart("pie_chart", {
-	            exportEnabled: true,
-	            animationEnabled: true,
-	            title:{
-		            text: ""
-	            },
-	            legend:{
-		            cursor: "pointer",
-		            itemclick: explodePie
-	            },
-	            data: [{
-		            type: "pie",
-		            showInLegend: true,
-		            toolTipContent: "{label}: <strong>{total}</strong>",
-		            indexLabel: "{label} - {total}",
-		            dataPoints: [
-
-                        { name: "child_care", y: (graph_data[0].child_care / max_data) * 100, label : "Child Care", total : graph_data[0].child_care },
-                        { name: "dental_health", y: (graph_data[0].dental_health / max_data) * 100, label : "Dental Health", total : graph_data[0].dental_health },
-                        { name: "environmental_health", y: (graph_data[0].environmental_health / max_data) * 100, label : "Environmental Health", total : graph_data[0].environmental_health },
-                        { name: "family_planning", y: (graph_data[0].family_planning / max_data) * 100, label : "Family Planning", total : graph_data[0].family_planning },
-                        { name: "filariasis", y: (graph_data[0].filariasis / max_data) * 100, label : "Filariasis", total : graph_data[0].filariasis },
-                        { name: "leprosy", y: (graph_data[0].leprosy / max_data) * 100 , exploded: true, label : "Leprosy", total : graph_data[0].leprosy },
-                        { name: "m2_bhs", y: (graph_data[0].m2_bhs / max_data) * 100, label : "M2 BHS", total : graph_data[0].m2_bhs },
-                        { name: "malaria", y: (graph_data[0].malaria / max_data) * 100, label : "Malaria", total : graph_data[0].malaria  },
-                        { name: "maternal_care", y: (graph_data[0].maternal_care / max_data) * 100, label : "Maternal Care", total : graph_data[0].maternal_care },
-                        { name: "mort_bhs", y: (graph_data[0].mort_bhs / max_data) * 100, label : "Mort bhs", total : graph_data[0].mort_bhs },
-                        { name: "mortality", y: (graph_data[0].mortality / max_data) * 100, label : "Mortality", total : graph_data[0].mortality },
-                        { name: "natality", y: (graph_data[0].natality / max_data) * 100, label : "Natality", total : graph_data[0].natality },
-                        { name: "natalitylcr", y: (graph_data[0].natalitylcr / max_data) * 100, label : "Natalitylcr", total : graph_data[0].natalitylcr },
-                        { name: "natalitytcl", y: (graph_data[0].natalitytcl / max_data) * 100, label : "Natalitytcl", total : graph_data[0].natalitytcl },
-                        { name: "schistosomiasis", y: (graph_data[0].schistosomiasis / max_data) * 100, label : "Schistosomiasis", total : graph_data[0].schistosomiasis },
-                        { name: "sti", y: (graph_data[0].sti / max_data) * 100, label : "STI", total : graph_data[0].sti },
-                        { name: "tuberculosis", y: (graph_data[0].tuberculosis / max_data) * 100, label : "Tuberculosis" , total : graph_data[0].tuberculosis}
-
-		            ]
-	            }]
-            });
-            chart2.render();
-            TabClick1();
-        }
-        RenderedCanvass();
-
-        function explodePie (e) {
-	        if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
-		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
-	        } else {
-		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
-	        }
-	        e.chart.render();
-
-        }
-
-        function TabClick1() {
-            $("#part1").show();
-            $("#part2").hide();
-        }
-        function TabClick2() {
-            $("#part1").hide();
-            $("#part2").show();
-        }
-
-
-    </script>
+    <partial name="~/Views/Shared/GraphScript.cshtml" />
 }

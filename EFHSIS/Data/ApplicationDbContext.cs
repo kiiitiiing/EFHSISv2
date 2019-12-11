@@ -128,44 +128,17 @@ namespace EFHSIS.Data
             modelBuilder.Entity<DemographicProfile>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.BgyDesc).IsUnicode(false);
-
-                entity.Property(e => e.Field1).IsUnicode(false);
-
-                entity.Property(e => e.Hc).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<DentalHealth>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
+                //entity.Property(e => e.ProvCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<EnvironmentalHealth>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
-
-                entity.Property(e => e.YearEnv).IsUnicode(false);
             });
 
             modelBuilder.Entity<FacilityProfile>(entity =>
@@ -182,14 +155,6 @@ namespace EFHSIS.Data
             modelBuilder.Entity<FamilyPlanning>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<Fhud1>(entity =>
@@ -234,14 +199,6 @@ namespace EFHSIS.Data
             modelBuilder.Entity<Filariasis>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<Icd10code>(entity =>
@@ -254,53 +211,21 @@ namespace EFHSIS.Data
             modelBuilder.Entity<Leprocy>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<M2Bhs>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<Malaria>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<MaternalCare>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<Month>(entity =>
@@ -315,27 +240,11 @@ namespace EFHSIS.Data
             modelBuilder.Entity<MortBhs>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<Mortality>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<MunPopulation>(entity =>
@@ -376,40 +285,16 @@ namespace EFHSIS.Data
             modelBuilder.Entity<Natality>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<NatalityLcr>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<NatalityTcl>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<OtherIndicators>(entity =>
@@ -508,27 +393,11 @@ namespace EFHSIS.Data
             modelBuilder.Entity<Schistosomiasis>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<Sti>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<SwitchboardItems>(entity =>
@@ -545,14 +414,6 @@ namespace EFHSIS.Data
             modelBuilder.Entity<Tuberculosis>(entity =>
             {
                 entity.HasNoKey();
-
-                //entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                //entity.Property(e => e.MunCode).IsUnicode(false);
-
-                //entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                //entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<Useraccounts>(entity =>

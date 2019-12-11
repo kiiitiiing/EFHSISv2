@@ -42,8 +42,19 @@ namespace EFHSIS.Controllers
             return View();
         }
 
-        public void GraphFunc(string stored_func,DateTime firstDay,DateTime lastDay) {
-            //var tuberculosis = await context.Database.SqlQuery<Tuberculosis>($"EXEC EFHSIS.dbo.{stored_func} @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';").ToListAsync();
+        [HttpPost]
+        public IActionResult TuberculosisHome(string filter)
+        {
+            var rx = new System.Text.RegularExpressions.Regex(" - ");
+            var array = rx.Split(filter);
+            var firstDay = array[0];
+            var lastDay = array[1];
+            GraphFunc("TuberculosisGraph", Convert.ToDateTime(firstDay), Convert.ToDateTime(lastDay));
+            return View();
+        }
+
+        public void GraphFunc(string stored_func, DateTime firstDay, DateTime lastDay)
+        {
             var tuberculosis = _context.Tuberculosis.FromSqlRaw($"EXEC EFHSIS.dbo.{stored_func} @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
             var obj = tuberculosis.ToList().First();
             var pie_chart = new List<PieChart>();
@@ -78,17 +89,5 @@ namespace EFHSIS.Controllers
             ViewBag.bar_chart = JsonConvert.SerializeObject(bar_chart);
         }
 
-        [HttpPost]
-        public IActionResult TuberculosisHome(string filter)
-        {
-            var rx = new System.Text.RegularExpressions.Regex(" - ");
-            var array = rx.Split(filter);
-            var firstDay = array[0];
-            var lastDay = array[1];
-            var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
-            ViewBag.DataPoints = JsonConvert.SerializeObject(consolidated);
-            ViewBag.UserInfo = JsonConvert.DeserializeObject<UserInfo>(HttpContext.Session.GetString("SessionUser"));
-            return View();
-        }
     }
 }

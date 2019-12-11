@@ -81,6 +81,14 @@ namespace EFHSIS.Controllers
             return View();
         }
 
+        public List<DentalHealth> dentalhealth()
+        {
+            var dental_health = _context.DentalHealth
+                                      .Where(s => s.ProvCode == "cebu")
+                                      .ToList();
+            return dental_health;
+        }
+
         public object TestFunc() {
             var dictionary = new Dictionary<string, object>();
             var dictionary1 = new Dictionary<string, object>();
