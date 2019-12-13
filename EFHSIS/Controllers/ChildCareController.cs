@@ -2,41 +2,84 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EFHSIS.AuthData;
 using EFHSIS.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using EFHSIS.Models.EFHSISModels;
-using EFHSIS.Models.GraphModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using static EFHSIS.Models.GraphModels.Graph;
 
 namespace EFHSIS.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ChildCareController : ControllerBase
+    [Authorize]
+    [MyActionFilter]
+    public class ChildCareController : Controller
     {
+        private readonly ILogger<ChildCareController> _logger;
         private readonly ApplicationDbContext _context;
 
-        public ChildCareController(ApplicationDbContext context)
+        public ChildCareController(ILogger<ChildCareController> logger, ApplicationDbContext context)
         {
+            _logger = logger;
             _context = context;
         }
-
         [HttpGet]
-        [Route("getchildcare")]
-        public List<ChildCare> GetChildCare()
+        public IActionResult ChildHome()
         {
-            var childcare = _context.ChildCare.FromSqlRaw("EXEC EFHSIS.dbo.GetChildCare @bgy_code = N'Poblacion Oriental';");
-            return childcare.ToList();
+            int year = DateTime.Now.Year;
+            DateTime firstDay = new DateTime(year, 1, 1);
+            DateTime lastDay = new DateTime(year, 12, 31);
+            GraphFunc("ChildCareGraph", firstDay, lastDay);
+            return View();
         }
-
-        [HttpGet]
-        [Route("childcaregraph")]
-        public List<ChildCareGraph> ChildCareGraph()
+        [HttpPost]
+        public IActionResult ChildHome(string filter)
         {
-            var child_graph = _context.ChildCareGraph.FromSqlRaw("EXEC EFHSIS.dbo.ChildCareGraph @date = N'2019-01-01',@prov_code = N'CEBU';");
-            
-            return child_graph.ToList();
+            var rx = new System.Text.RegularExpressions.Regex(" - ");
+            var array = rx.Split(filter);
+            var firstDay = array[0];
+            var lastDay = array[1];
+            GraphFunc("ChildCareGraph", Convert.ToDateTime(firstDay), Convert.ToDateTime(lastDay));
+            return View();
+        }
+        public void GraphFunc(string stored_func, DateTime firstDay, DateTime lastDay)
+        {
+            var province = HttpContext.Session.GetString("province_id");
+            var child_care = _context.ChildCare.FromSqlRaw($"EXEC EFHSIS.dbo.{stored_func} @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'{province}';");
+            var obj = child_care.ToList().First();
+            var pie_chart = new List<PieChart>();
+            foreach (var property in obj.GetType().GetProperties())
+            {
+                if (property.GetValue(obj) != null && property.Name != "Date" && property.Name != "max_data")
+                {
+                    pie_chart.Add(new PieChart
+                    {
+                        name = property.Name,
+                        label = property.Name,
+                        y = (int)property.GetValue(obj),
+                        total = (int)property.GetValue(obj),
+                        exploded = true
+                    });
+                }
+            }
+            ViewBag.pie_chart = JsonConvert.SerializeObject(pie_chart);
+
+            var bar_chart = new List<BarChart>();
+            foreach (var property in obj.GetType().GetProperties())
+            {
+                if (property.GetValue(obj) != null && property.Name != "Date" && property.Name != "max_data")
+                {
+                    bar_chart.Add(new BarChart
+                    {
+                        label = property.Name,
+                        y = (int)property.GetValue(obj)
+                    });
+                }
+            }
+            ViewBag.bar_chart = JsonConvert.SerializeObject(bar_chart);
         }
 
     }

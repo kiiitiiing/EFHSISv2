@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "ChildCare";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">@ViewData["Title"] </h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Target Population</span>
+                            <span class="info-box-number">
+                                7,876,400
+                            </span>
+                            <small class="text-green">Target Poor (2,090,994)</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Population Profiled</span>
+                            <span class="info-box-number">7,143,199</span>
+                            <small class="text-success">90.7% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-file-medical-alt"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of EFHSIS</span>
+                            <span class="info-box-number efhsis_total">0</span>
+                            <small class="text-success">80% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-city"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of Municipality</span>
+                            <span class="info-box-number">3,004</span>
+                            <small class="text-success">90.7% Goal Completion</small>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Recap Report</h5>
+                            <div class="card-tools">
+                                <ul class="nav nav-pills ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#part1" data-toggle="tab" onclick="TabClick1();">Part 1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#part2" data-toggle="tab" onclick="TabClick2();">Part 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="text-center">
+                                <strong>EFHSIS: January 1, 2019 to December 31, 2019</strong>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <div class="tab-pane active" id="part1">
+                                            <div id="pie_chart" style="height: 400px; width: 100%;"></div>
+                                        </div>
+                                        <div class="tab-pane" id="part2">
+                                            <div id="bar_chart" style="height: 400px; width: 100%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+        </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+@section Scripts {
+    <script>
+        $('body').addClass("hold-transition sidebar-mini");
+    </script>
+
+    <partial name="~/Views/Shared/GraphScript.cshtml" />
+}

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EFHSIS.Models;
+using EFHSIS.AuthData;
 
 namespace EFHSIS
 {
@@ -31,6 +32,9 @@ namespace EFHSIS
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<LoginDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
@@ -47,14 +51,16 @@ namespace EFHSIS
            });
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddMvc();
+            services.AddMvc(
+                config =>
+                {
+                    //config.Filters.Add(new UserActionFilter());
+                }
+            );
 
             services.AddSession(options => {
                 options.IdleTimeout = TimeSpan.FromSeconds(3600);
             });
-
-            services.AddDbContext<LoginDbContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

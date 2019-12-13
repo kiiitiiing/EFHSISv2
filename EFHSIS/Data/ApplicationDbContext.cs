@@ -90,14 +90,6 @@ namespace EFHSIS.Data
             modelBuilder.Entity<ChildCare>(entity =>
             {
                 entity.HasNoKey();
-
-                entity.Property(e => e.BgyCode).IsUnicode(false);
-
-                entity.Property(e => e.MunCode).IsUnicode(false);
-
-                entity.Property(e => e.ProvCode).IsUnicode(false);
-
-                entity.Property(e => e.RegCode).IsUnicode(false);
             });
 
             modelBuilder.Entity<ChildCareGraph>(entity =>

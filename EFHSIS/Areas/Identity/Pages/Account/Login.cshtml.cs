@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using EFHSIS.Data;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace EFHSIS.Areas.Identity.Pages.Account
 {
@@ -22,16 +25,20 @@ namespace EFHSIS.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly IEmailSender _emailSender;
-
+        private readonly LoginDbContext _context;
+       
         public LoginModel(SignInManager<User> signInManager, 
             ILogger<LoginModel> logger,
             UserManager<User> userManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            LoginDbContext context    
+        )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _context = context;
         }
 
         [BindProperty]
@@ -73,7 +80,7 @@ namespace EFHSIS.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-
+    
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -86,6 +93,25 @@ namespace EFHSIS.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    var users = from m in _context.AspNetUsers
+                                select m;
+                    users = users.Where(x => x.username.Equals(Input.Username));
+
+                    var userinfo = new UserInfo() { 
+                        username = users.First().username, 
+                        password = users.First().password,
+                        province_id = users.First().province_id
+                    };
+                    HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(userinfo));
+                    var user_province = new Dictionary<int, object>();
+                    user_province.Add(0, "SESSION EXPIRED");
+                    user_province.Add(1, "BOHOL");
+                    user_province.Add(2, "CEBU");
+                    user_province.Add(3, "NEGROS ORIENTAL");
+                    var province = users.First().province_id;
+                    HttpContext.Session.SetString("province_id", user_province[province].ToString());
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

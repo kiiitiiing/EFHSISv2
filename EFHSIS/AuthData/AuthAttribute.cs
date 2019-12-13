@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EFHSIS.Models.EFHSISModels
+namespace EFHSIS.AuthData
 {
-    public partial class AspNetUsers
+    public class AuthAttribute
     {
-        
     }
 }

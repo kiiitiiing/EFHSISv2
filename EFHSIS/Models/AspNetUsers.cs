@@ -17,5 +17,7 @@ namespace EFHSIS.Models
         [Column("PasswordHash")]
         [StringLength(50)]
         public string password { get; set; }
+
+        public int province_id { get; set; }
     }
 }

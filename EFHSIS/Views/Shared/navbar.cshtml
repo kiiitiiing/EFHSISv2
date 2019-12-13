@@ -56,7 +56,14 @@
                     <img src="~/img/doh.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">DOH CHD 7</a>
+                    @{ 
+                        var name_style = "";
+                        if(ViewBag.user_info.province_id == 3)
+                            name_style = "font-size:10pt";
+                    }
+                    <a href="#" class="d-block" style="@name_style">
+                        @ViewBag.user_province[ViewBag.user_info.province_id] PROVINCE
+                    </a>
                 </div>
             </div>
 
@@ -73,7 +80,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @ViewBag.NavCheck["/Home/ChildCare"]" href="@Url.Action("ChildCare","Home")" onclick="loadingDisplay()">
+                        <a class="nav-link @ViewBag.NavCheck["/ChildCare/ChildHome"]" href="@Url.Action("ChildHome","ChildCare")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-child"></i>
                             <p>
                                 Child Care

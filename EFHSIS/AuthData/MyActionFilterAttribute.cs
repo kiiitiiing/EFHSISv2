@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.Extensions;
+using Newtonsoft.Json;
+using EFHSIS.Models;
 
 namespace EFHSIS.AuthData
 {
@@ -22,7 +24,7 @@ namespace EFHSIS.AuthData
             controller.ViewBag.ctrlurl = url;
             var dictionary = new Dictionary<string, object>();
             dictionary.Add("/","");
-            dictionary.Add("/Home/ChildCare","");
+            dictionary.Add("/ChildCare/ChildHome","");
             dictionary.Add("/DentalHealth/DentalHome","");
             dictionary.Add("/EnvironmentalHealth/EnvironmentalHome", "");
             dictionary.Add("/FamilyPlanning/FamilyHome", "");
@@ -40,6 +42,32 @@ namespace EFHSIS.AuthData
             dictionary.Add("/Tuberculosis/TuberculosisHome", "");
             dictionary[url] = "active";
             controller.ViewBag.NavCheck = dictionary;
+            var user_province = new Dictionary<int, object>();
+            user_province.Add(0,"SESSION EXPIRED");
+            user_province.Add(1,"BOHOL");
+            user_province.Add(2,"CEBU");
+            user_province.Add(3,"NEGROS ORIENTAL");
+            controller.ViewBag.user_province = user_province;
+
+            var session_obj = context.HttpContext.Session.GetString("SessionUser");
+            if (session_obj == null)
+                context.HttpContext.Response.Redirect("/logout");
+
+
+            var user_info = session_obj != null 
+                ? 
+                JsonConvert.DeserializeObject<UserInfo>(context.HttpContext.Session.GetString("SessionUser")) 
+                : 
+                new UserInfo()
+                {
+                    username = "Session Expired",
+                    password = "Session Expired",
+                    province_id = 0
+                };
+            
+            controller.ViewBag.user_info = user_info;
+
+
         }
 
     }

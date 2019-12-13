@@ -33,38 +33,37 @@ namespace EFHSIS.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            var province = HttpContext.Session.GetString("province_id");
             int year = DateTime.Now.Year;
             DateTime firstDay = new DateTime(year, 1, 1);
             DateTime lastDay = new DateTime(year, 12, 31);
 
-            var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
+            var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'{province}';");
             ViewBag.DataPoints = JsonConvert.SerializeObject(consolidated);
-
-            var userinfo = new UserInfo() { UserId = 1,UserName = "John Doe" };
-            HttpContext.Session.SetString("SessionUser",JsonConvert.SerializeObject(userinfo));
-
             return View();
         }
 
         [HttpPost]
         public IActionResult Index(String filter)
         {
+            var province = HttpContext.Session.GetString("province_id");
             var rx = new System.Text.RegularExpressions.Regex(" - ");
             var array = rx.Split(filter);
             var firstDay = array[0];
             var lastDay = array[1];
-            var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
+            var consolidated = _context.Consolidated.FromSqlRaw($"EXEC EFHSIS.dbo.Consolidated @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'{province}';");
             ViewBag.DataPoints = JsonConvert.SerializeObject(consolidated);
             return View();
         }
 
         [HttpGet]
         public IActionResult ChildCare() {
+            var province = HttpContext.Session.GetString("province_id");
             int year = DateTime.Now.Year;
             DateTime firstDay = new DateTime(year, 1, 1);
             DateTime lastDay = new DateTime(year, 12, 31);
 
-            var child_graph = _context.ChildCareGraph.FromSqlRaw($"EXEC EFHSIS.dbo.ChildCareGraph @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
+            var child_graph = _context.ChildCareGraph.FromSqlRaw($"EXEC EFHSIS.dbo.ChildCareGraph @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'{province}';");
             ViewBag.DataPoints = JsonConvert.SerializeObject(child_graph);
             return View();
         }
@@ -72,11 +71,12 @@ namespace EFHSIS.Controllers
         [HttpPost]
         public IActionResult ChildCare(string filter)
         {
+            var province = HttpContext.Session.GetString("province_id");
             var rx = new System.Text.RegularExpressions.Regex(" - ");
             var array = rx.Split(filter);
             var firstDay = array[0];
             var lastDay = array[1];
-            var child_graph = _context.ChildCareGraph.FromSqlRaw($"EXEC EFHSIS.dbo.ChildCareGraph @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
+            var child_graph = _context.ChildCareGraph.FromSqlRaw($"EXEC EFHSIS.dbo.ChildCareGraph @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'{province}';");
             ViewBag.DataPoints = JsonConvert.SerializeObject(child_graph);
             return View();
         }

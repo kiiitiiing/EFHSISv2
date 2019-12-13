@@ -52,9 +52,8 @@ namespace EFHSIS.Areas.Identity.Pages.Account
             public string Username { get; set; }
 
             [Required]
-            [StringLength(50)]
             [Display(Name = "province_id")]
-            public string province_id { get; set; }
+            public int province_id { get; set; }
 
             [Required]
             [EmailAddress]

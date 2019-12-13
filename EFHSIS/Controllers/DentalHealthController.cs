@@ -52,9 +52,10 @@ namespace EFHSIS.Controllers
 
         public void GraphFunc(string stored_func, DateTime firstDay, DateTime lastDay)
         {
-            var tuberculosis = _context.DentalHealth.FromSqlRaw($"EXEC EFHSIS.dbo.{stored_func} @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'CEBU';");
-            var obj = tuberculosis.ToList().First();
-            var pie_chart = new List<PieChart>();
+            var province = HttpContext.Session.GetString("province_id");
+            var dental_health = _context.DentalHealth.FromSqlRaw($"EXEC EFHSIS.dbo.{stored_func} @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'{province}';");
+            var obj = dental_health.ToList().First();
+            var pie_chart = new List<PieChart>(); //sadasd
             foreach (var property in obj.GetType().GetProperties())
             {
                 if (property.GetValue(obj) != null && property.Name != "Date" && property.Name != "max_data")
