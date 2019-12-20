@@ -13,11 +13,11 @@ namespace EFHSIS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ChildCareController1 : ControllerBase
+    public class ChildCare1Controller : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ChildCareController1(ApplicationDbContext context)
+        public ChildCare1Controller(ApplicationDbContext context)
         {
             _context = context;
         }

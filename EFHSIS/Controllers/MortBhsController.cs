@@ -51,7 +51,7 @@ namespace EFHSIS.Controllers
 
         public void GraphFunc(string stored_func, DateTime firstDay, DateTime lastDay)
         {
-            var province = HttpContext.Session.GetString("province_id");
+            var province = "CEBU";
             var tuberculosis = _context.MortBhs.FromSqlRaw($"EXEC EFHSIS.dbo.{stored_func} @date_start = N'{firstDay}',@date_end = N'{lastDay}',@prov_code = N'{province}';");
             var obj = tuberculosis.ToList().First();
             var pie_chart = new List<PieChart>();

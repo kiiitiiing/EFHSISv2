@@ -31,9 +31,15 @@ namespace EFHSIS.Controllers
         }
 
         [HttpGet]
+        //public List<ChildCare> Index()
+        //{
+        //    var childcare = _context.ChildCare.FromSqlRaw("EXEC EFHSIS.dbo.GetChildCare @bgy_code = N'Poblacion Oriental';");
+        //    return childcare.ToList();
+        //}
         public IActionResult Index()
         {
-            var province = HttpContext.Session.GetString("province_id");
+            //var province = HttpContext.Session.GetString("province_id");
+            var province = "CEBU";
             int year = DateTime.Now.Year;
             DateTime firstDay = new DateTime(year, 1, 1);
             DateTime lastDay = new DateTime(year, 12, 31);

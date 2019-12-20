@@ -23,7 +23,7 @@ namespace EFHSIS.Controllers
 
         public IActionResult Index() {
             _signInManager.SignOutAsync();
-            return Redirect("/");
+            return Redirect("/konsole/");
         }
 
     }

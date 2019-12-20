@@ -102,31 +102,207 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="#part2" data-toggle="tab" onclick="TabClick2();">Part 2</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#part3" data-toggle="tab" onclick="TabClick3();">Part 3</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#part4" data-toggle="tab" onclick="TabClick4();">Part 4</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="card-body">
-                            <p class="text-center">
-                                <strong>EFHSIS: January 1, 2019 to December 31, 2019</strong>
-                            </p>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <div class="tab-pane active" id="part1">
-                                            <div id="pie_chart" style="height: 400px; width: 100%;"></div>
+                            <div class="tab-pane active" id="part1">
+                                <p class="text-center">
+                                    <strong>Neonatal, Infant and Under Five</strong><br>
+                                    <small>Mortality Rate, CY 2014-2018</small>
+                                </p>
+                                <div id="pie_chart" style="height: 400px; width: 100%;"></div>
+                            </div>
+                            <div class="tab-pane" id="part2">
+                                <p class="text-center">
+                                    <strong>Neonatal, Infant and Under Five</strong><br>
+                                    <small>Mortality Rate, CY 2014-2018</small>
+                                </p>
+                                <div id="bar_chart" style="height: 400px; width: 100%;"></div>
+                            </div>
+                            <div class="tab-pane" id="part3">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="text-center">
+                                            <strong>Neonatal, Infant and Under Five</strong><br>
+                                            <small>Mortality Rate, CY 2014-2018</small>
+                                        </p>
+                                        <div id="line_chart" style="height: 300px; width: 100%;"></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="text-center">
+                                            <strong>Causes</strong>
+                                        </p>
+
+                                        <div class="progress-group">
+                                            1. Pneumonia
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                            </div>
                                         </div>
-                                        <div class="tab-pane" id="part2">
-                                            <div id="bar_chart" style="height: 400px; width: 100%;"></div>
+
+                                        <div class="progress-group">
+                                            <span class="progress-text">2. Aspiration Neonatal</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                                            </div>
                                         </div>
+
+                                        <div class="progress-group">
+                                            3. Injuries
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            4. Prematurity
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            5. Sepsis
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            <span class="progress-text">6. Respiratory Distress</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            7. Gastroenteritis
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            8. Fetal Hyperthyroidism
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            9. Neonatal Asphyxia
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            10. Congenital Heart Failure
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <!-- /.col -->
                             </div>
-                            <!-- /.row -->
+                            <div class="tab-pane" id="part4">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="text-center">
+                                            <strong>Maternal Mortality Ration</strong><br>
+                                            <small>Region 7, CY 2013 - 2018</small>
+                                        </p>
+                                        <div id="line_chart1" style="height: 300px; width: 100%;"></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="text-center">
+                                            <strong>Causes</strong>
+                                        </p>
+
+                                        <div class="progress-group">
+                                            1. Eclampsia
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            <span class="progress-text">2. Pre-Eclampsia</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            3. Postpartum Hemorrhage
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            4. Uterine Atony
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            5. Ammiotic Fluid Embolism
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            <span class="progress-text">6. Intra Amniotic Infection</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            7. Desseminated Intravascular Coagulation
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            8. Placenta Retention
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            9. Abruption Placenta
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="progress-group">
+                                            10. Sepsis
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> <!-- /.part 4 -->
                         </div>
-                    </div>
-                    <!-- /.card -->
+                    </div> <!-- /.card -->
                 </div>
                 <!-- /.col -->
             </div>
@@ -143,5 +319,220 @@
         $('body').addClass("hold-transition sidebar-mini");
     </script>
 
-    <partial name="~/Views/Shared/GraphScript.cshtml" />
+    <script>
+        function RenderedCanvass() {
+            var pie_chart_data = @Html.Raw(ViewBag.pie_chart);
+            console.log(pie_chart_data);
+
+            var pie_var = new CanvasJS.Chart("pie_chart", {
+	            exportEnabled: true,
+	            animationEnabled: true,
+	            title:{
+		            text: ""
+	            },
+	            legend:{
+		            cursor: "pointer",
+		            itemclick: explodePie
+	            },
+	            data: [{
+		            type: "pie",
+		            showInLegend: true,
+		            toolTipContent: "{label}: <strong>{total}</strong>",
+                    indexLabel: "{label} - {total}",
+                    dataPoints: pie_chart_data
+	            }]
+            });
+            pie_var.render();
+
+            var bar_chart_data = @Html.Raw(ViewBag.bar_chart);
+            console.log(bar_chart_data);
+            var bar_var = new CanvasJS.Chart("bar_chart", {
+                animationEnabled: true,
+                title: {
+                    text: ""
+                },
+                axisX: {
+                    interval: 1
+                },
+                axisY: {
+                    title: "Expenses in Billion Dollars",
+                    scaleBreaks: {
+                        type: "wavy",
+                        customBreaks: [{
+                                startValue: 10000,
+                                endValue: 24000
+                            }
+                        ]
+                    }
+                },
+                data: [{
+                    type: "bar",
+                    toolTipContent: "<b>{label}</b><br>Total: {y}",
+                    dataPoints: bar_chart_data
+                }]
+            });
+            bar_var.render();
+
+            var line_var = new CanvasJS.Chart("line_chart", {
+	            theme: "light2", // "light1", "light2", "dark1", "dark2"
+	            animationEnabled: true,
+	            title:{
+					text: ""
+				},
+				axisX: {
+					interval: 1,
+					intervalType: "year",
+					valueFormatString: "YYYY"
+				},
+				axisY:{
+					title: "",
+					valueFormatString: ""
+                },
+                toolTip: {
+		            shared: "true"
+	            },
+	            legend:{
+		            cursor:"pointer",
+		            itemclick : toggleDataSeries
+	            },
+	            data: [{
+						type: "line",
+						markerSize: 12,
+						xValueFormatString: "YYYY",
+                        yValueFormatString: "",
+                        showInLegend: true,
+                        color: "#6B8E23",
+                        name: "Neonatal Mortality Rate(10 Deaths/1000 LBs)",
+						dataPoints: [
+							{ x: new Date(2014, 00, 1), y: 11.57, indexLabel: "11.57", markerType: "triangle",  markerColor: "#6B8E23" },
+							{ x: new Date(2015, 00, 1) , y: 12.06, indexLabel: "12.06", markerType: "triangle", markerColor: "#6B8E23" },
+							{ x: new Date(2016, 00, 1) , y: 14.45, indexLabel: "14.45", markerType: "triangle", markerColor: "#6B8E23" },
+							{ x: new Date(2017, 00, 1) , y: 10.93, indexLabel: "10.93", markerType: "triangle", markerColor: "#6B8E23" },
+							{ x: new Date(2018, 00, 1) , y: 10.78, indexLabel: "10.78", markerType: "triangle", markerColor: "#6B8E23" }
+						]
+					},
+					{
+						type: "line",
+						markerSize: 12,
+						xValueFormatString: "YYYY",
+						yValueFormatString: "",
+                        color: "#F08080",
+                        showInLegend: true,
+                        name: "Infant Mortality Rate(17 Deaths/1000 LBs)",
+						dataPoints: [
+							{ x: new Date(2014, 00, 1), y: 8.63, indexLabel: "8.63", markerType: "square",  markerColor: "#F08080" },
+							{ x: new Date(2015, 00, 1) , y: 6.31, indexLabel: "6.31", markerType: "square", markerColor: "#F08080" },
+							{ x: new Date(2016, 00, 1) , y: 7.01, indexLabel: "7.01", markerType: "square", markerColor: "#F08080" },
+							{ x: new Date(2017, 00, 1) , y: 5.05, indexLabel: "5.05", markerType: "square", markerColor: "#F08080" },
+							{ x: new Date(2018, 00, 1) , y: 7.16, indexLabel: "7.16", markerType: "square", markerColor: "#F08080" }
+						]
+					},
+					{
+						type: "line",
+						markerSize: 12,
+						xValueFormatString: "YYYY",
+						yValueFormatString: "",
+                        color: "blue",
+                        showInLegend: true,
+                        name: "Under Five Mortality Rate(26 Deaths//1000 LBs)",
+						dataPoints: [
+							{ x: new Date(2014, 00, 1), y: 2.86, indexLabel: "2.86", markerType: "circle",  markerColor: "blue" },
+							{ x: new Date(2015, 00, 1) , y: 2.74, indexLabel: "2.74", markerType: "circle", markerColor: "blue" },
+							{ x: new Date(2016, 00, 1) , y: 3.24, indexLabel: "3.24", markerType: "circle", markerColor: "blue" },
+							{ x: new Date(2017, 00, 1) , y: 3.43, indexLabel: "3.43", markerType: "circle", markerColor: "blue" },
+							{ x: new Date(2018, 00, 1) , y: 3.67, indexLabel: "3.67", markerType: "circle", markerColor: "blue" }
+						]
+					}
+				]
+            });
+            line_var.render();
+
+            var line_var1 = new CanvasJS.Chart("line_chart1", {
+	            animationEnabled: true,  
+	            title:{
+		            text: ""
+	            },
+  	            axisX: {
+                  title : "52 maternal deaths / 10,000 lbs",
+                  interval: 1,
+                  intervalType: "year",
+                  valueFormatString: "YYYY"
+                },
+	            axisY: {
+		            title: "",
+		            valueFormatString: "#00.00",
+		            suffix: "",
+		            stripLines: [{
+			            value: 52,
+			            label: "Average"
+		            }]
+	            },
+	            data: [{
+		            yValueFormatString: "#,### Units",
+		            xValueFormatString: "YYYY",
+		            type: "spline",
+		            dataPoints: [
+			            {x: new Date(2013, 0), y: 85.60 ,indexLabel: "85.60"},
+			            {x: new Date(2014, 0), y: 80.59 ,indexLabel: "80.59"},
+			            {x: new Date(2015, 0), y: 67.07 ,indexLabel: "67.07"},
+			            {x: new Date(2016, 0), y: 41.74 ,indexLabel: "41.74"},
+			            {x: new Date(2017, 0), y: 57.93 ,indexLabel: "57.93"}
+		            ]
+	            }]
+            });
+            line_var1.render();
+
+            TabClick1();
+
+        }
+
+
+        RenderedCanvass();
+
+        function explodePie (e) {
+	        if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	        } else {
+		        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	        }
+	        e.chart.render();
+
+        }
+
+        function toggleDataSeries(e) {
+	        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
+		        e.dataSeries.visible = false;
+	        } else {
+		        e.dataSeries.visible = true;
+	        }
+	        chart.render();
+        }
+
+        function TabClick1() {
+            $("#part1").show();
+            $("#part2").hide();
+            $("#part3").hide();
+            $("#part4").hide();
+        }
+        function TabClick2() {
+            $("#part1").hide();
+            $("#part2").show();
+            $("#part3").hide();
+            $("#part4").hide();
+        }
+        function TabClick3() {
+            $("#part1").hide();
+            $("#part2").hide();
+            $("#part3").show();
+            $("#part4").hide();
+        }
+        function TabClick4() {
+            $("#part1").hide();
+            $("#part2").hide();
+            $("#part3").hide();
+            $("#part4").show();
+        }
+
+
+    </script>
 }

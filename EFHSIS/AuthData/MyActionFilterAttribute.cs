@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.Extensions;
 using Newtonsoft.Json;
 using EFHSIS.Models;
+using System.Reflection;
 
 namespace EFHSIS.AuthData
 {
@@ -23,15 +24,15 @@ namespace EFHSIS.AuthData
             var url = context.HttpContext.Request.Path;
             controller.ViewBag.ctrlurl = url;
             var dictionary = new Dictionary<string, object>();
-            dictionary.Add("/","");
-            dictionary.Add("/ChildCare/ChildHome","");
-            dictionary.Add("/DentalHealth/DentalHome","");
+            dictionary.Add("","");
+            dictionary.Add("/ChildCare/ChildHome", "");
+            dictionary.Add("/DentalHealth/DentalHome", "");
             dictionary.Add("/EnvironmentalHealth/EnvironmentalHome", "");
             dictionary.Add("/FamilyPlanning/FamilyHome", "");
             dictionary.Add("/Filariasis/FilariasisHome", "");
             dictionary.Add("/Leprosy/LeprosyHome", "");
             dictionary.Add("/Malaria/MalariaHome", "");
-            dictionary.Add("/MaternalCare/MaternalHome","");
+            dictionary.Add("/MaternalCare/MaternalHome", "");
             dictionary.Add("/MortBhs/MortBhsHome", "");
             dictionary.Add("/Mortality/MortalityHome", "");
             dictionary.Add("/Natality/NatalityHome", "");
@@ -48,10 +49,11 @@ namespace EFHSIS.AuthData
             user_province.Add(2,"CEBU");
             user_province.Add(3,"NEGROS ORIENTAL");
             controller.ViewBag.user_province = user_province;
+            context.HttpContext.Session.SetString("province_id", "CEBU"); //temporary lang para dile ma error ang system
 
             var session_obj = context.HttpContext.Session.GetString("SessionUser");
-            if (session_obj == null)
-                context.HttpContext.Response.Redirect("/logout");
+            /*if (session_obj == null)
+                context.HttpContext.Response.Redirect("/konsole/logout");*/
 
 
             var user_info = session_obj != null 
@@ -64,7 +66,7 @@ namespace EFHSIS.AuthData
                     password = "Session Expired",
                     province_id = 0
                 };
-            
+
             controller.ViewBag.user_info = user_info;
 
 

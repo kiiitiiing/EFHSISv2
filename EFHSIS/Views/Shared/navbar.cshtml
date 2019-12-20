@@ -56,13 +56,8 @@
                     <img src="~/img/doh.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    @{ 
-                        var name_style = "";
-                        if(ViewBag.user_info.province_id == 3)
-                            name_style = "font-size:10pt";
-                    }
-                    <a href="#" class="d-block" style="@name_style">
-                        @ViewBag.user_province[ViewBag.user_info.province_id] PROVINCE
+                    <a href="#" class="d-block">
+                        DOH - CHCHD 7
                     </a>
                 </div>
             </div>
@@ -71,7 +66,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a class="nav-link @ViewBag.NavCheck["/"]" href="@Url.Action("Index","Home")" onclick="loadingDisplay()">
+                        <a class="nav-link @ViewBag.NavCheck[""]" href="@Url.Action("Index","Home")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -147,18 +142,18 @@
                         <a class="nav-link @ViewBag.NavCheck["/MortBhs/MortBhsHome"]" href="@Url.Action("MortBhsHome","MortBhs")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-bed"></i>
                             <p>
-                                Mort Bhs
+                                Mortality Under Five
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link @ViewBag.NavCheck["/Mortality/MortalityHome"]" href="@Url.Action("MortalityHome","Mortality")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-route"></i>
                             <p>
                                 Mortality
                             </p>
                         </a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <a class="nav-link @ViewBag.NavCheck["/Natality/NatalityHome"]" href="@Url.Action("NatalityHome","Natality")" onclick="loadingDisplay()">
                             <i class="nav-icon fas fa-grimace"></i>
